@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("form").addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                const formData = new FormData(event.target);
+
+                const formObject = {};
+                formData.forEach((value, key) => {
+                    formObject[key] = value;
+                });
+
+                const jsonData = JSON.stringify(formObject);
+                
+                console.log(jsonData)
+
+                fetch('/login', {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: jsonData
+                })
+                .then(async response => {
+                    sessionStorage.setItem("access_token", response.json()["access_token"])
+                })
+                .catch((error) => {
+                    console.log("Error:", error)
+                })
+
+                window.location = "/"
+            })
+        })
+    </script>
+</head>
+<body>
+    Please login
+    <form id="form">
+        <input type="text" name="username" placeholder="username" id="username">
+        <input type="password" name="password" placeholder="password" id="password">
+        <input type="submit" value="Login">
+    </form>
+    <a href="/register">Don't have an account? Click here</a>
+</body>
+</html>
