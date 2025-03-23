@@ -29,7 +29,7 @@ def generate_refresh_token(userid, token_version):
         algorithm="HS256"
     )
 
-def verify_token(token, secret):
+def verify_token(token):
     try:
         decoded = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
         return decoded

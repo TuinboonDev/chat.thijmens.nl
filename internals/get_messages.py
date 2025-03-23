@@ -13,8 +13,8 @@ def getmessages():
     for item in messages:
         i += 1
         for account in accounts:
-            if item["userid"] == account["id"]:
-                item["userid"] = account["name"]
+            if item["userid"] == accounts[account]["id"]:
+                item["userid"] = account
         if "https://" in item["message"]:
             for word in item["message"].split(" "):
                 if word.startswith("https://"):

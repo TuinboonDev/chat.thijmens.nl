@@ -6,7 +6,7 @@
     <title>Document</title>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("form").addEventListener("submit", (event) => {
+            document.getElementById("form").addEventListener("submit", function(e) {
                 event.preventDefault();
 
                 const formData = new FormData(event.target);
@@ -17,9 +17,8 @@
                 });
 
                 const jsonData = JSON.stringify(formObject);
-                
 
-                fetch('/api/login', {
+                fetch('/api/register', {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
@@ -40,17 +39,23 @@
                     console.log("Error:", error)
                 })
 
+                // var username = document.getElementById("username").value
+                // var password = document.getElementById("password").value
+                // localStorage.setItem("username", username);
+                // localStorage.setItem("password", password);
+                // localStorage.setItem("token", username + password)
+
+                // loginForm.submit();
             })
         })
     </script>
 </head>
 <body>
-    Please login
+    Please register
     <form id="form">
         <input type="text" name="username" placeholder="username" id="username">
         <input type="password" name="password" placeholder="password" id="password">
-        <input type="submit" value="Login">
+        <input type="submit" value="Register">
     </form>
-    <a href="/register">Don't have an account? Click here</a>
 </body>
 </html>

@@ -1,8 +1,8 @@
 {
     "tuinboon": {
-        "pass": "123!",
-        "token": "Tuinboon123!",
+        "pass": "$2b$12$xzLqQbSUAjOwAV45w59yL.DRcoYEunCpRrUN5ml0mFWNukpjObZh2",
         "id": 0,
+        "servers": [],
         "token_version": 0
     }
 }
